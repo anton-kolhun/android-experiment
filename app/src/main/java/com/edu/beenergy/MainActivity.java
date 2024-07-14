@@ -40,6 +40,20 @@ public class MainActivity extends AppCompatActivity {
             }
         }.start();
 
+        new Thread() {
+            public void run() {
+                while (true) {
+                    try {
+                        Thread.sleep(57 * 1000);
+                        controller.doCheckin();
+                    } catch (Exception e) {
+                        System.out.println("Error occurred" + e);
+                        runOnUiThread(() -> output.setText("Error occurred"));
+                    }
+                }
+            }
+        }.start();
+
 
     }
 }

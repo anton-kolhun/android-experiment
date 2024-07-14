@@ -13,7 +13,7 @@ public class PingController {
 
     private final Button pingButton;
     private final EditText urlText;
-    private final EditText prefireText;
+    private final EditText checkInText;
     private volatile boolean powerConnected = false;
 
     private final OkHttpClient httpClient;
@@ -32,7 +32,7 @@ public class PingController {
             this.pingEnabled = !pingEnabled;
         });
         this.urlText = mainActivity.findViewById(R.id.url_to_ping);
-        this.prefireText = mainActivity.findViewById(R.id.url_to_prefire);
+        this.checkInText = mainActivity.findViewById(R.id.url_to_checkin);
         this.httpClient = new OkHttpClient.Builder()
                 .connectTimeout(3, TimeUnit.SECONDS)
                 .readTimeout(5, TimeUnit.SECONDS)
@@ -48,10 +48,12 @@ public class PingController {
             return "Power is not connected";
         }
         String uri = urlText.getText().toString();
-        String prefire = prefireText.getText().toString();
-        String result = executeHttpCall(uri);
-        executeHttpCall(prefire);
-        return result;
+        return executeHttpCall(uri);
+    }
+
+    public String doCheckin() {
+        String checkin = checkInText.getText().toString();
+        return executeHttpCall(checkin);
     }
 
 
