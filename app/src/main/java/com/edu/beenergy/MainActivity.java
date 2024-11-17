@@ -17,8 +17,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         PingController controller = new PingController(this);
-        getApplicationContext().registerReceiver(new PowerConnectionReceiver(controller), new IntentFilter(Intent.ACTION_POWER_CONNECTED));
-        getApplicationContext().registerReceiver(new PowerConnectionReceiver(controller), new IntentFilter(Intent.ACTION_POWER_DISCONNECTED));
+        //getApplicationContext().registerReceiver(new PowerConnectionReceiver(controller), new IntentFilter(Intent.ACTION_POWER_CONNECTED));
+        //getApplicationContext().registerReceiver(new PowerConnectionReceiver(controller), new IntentFilter(Intent.ACTION_POWER_DISCONNECTED));
         runPinger(controller);
     }
 

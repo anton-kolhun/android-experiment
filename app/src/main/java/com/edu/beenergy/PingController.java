@@ -14,7 +14,7 @@ public class PingController {
     private final Button pingButton;
     private final EditText urlText;
     private final EditText checkInText;
-    private volatile boolean powerConnected = false;
+    private static volatile boolean powerConnected = false;
 
     private final OkHttpClient httpClient;
 
@@ -70,7 +70,7 @@ public class PingController {
         }
     }
 
-    public void markPowerConnected(boolean isConnected) {
-        this.powerConnected = isConnected;
+    public static void markPowerConnected(boolean isConnected) {
+        powerConnected = isConnected;
     }
 }
